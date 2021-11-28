@@ -1,0 +1,116 @@
+baseURL = 'http://alhuelamo.com/'
+languageCode = 'en-us'
+title = 'alhuelamo.com'
+theme = "hello-friend-ng"
+
+paginate = 10
+rssLimit  = 10  # Maximum number of items in the RSS feed.
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
+
+PygmentsCodeFences = true
+PygmentsStyle = "monokai"
+
+archetypeDir = "archetypes"
+contentDir   = "content"
+dataDir      = "data"
+layoutDir    = "layouts"
+publishDir   = "public"
+
+enableRobotsTXT = true
+enableGitInfo   = false
+enableEmoji     = true
+enableMissingTranslationPlaceholders = false
+disableRSS     = false
+disableSitemap = false
+disable404     = false
+disableHugoGeneratorInject = false
+
+[permalinks]
+    posts = "/posts/:year/:month/:title/"
+
+[author]
+    name = "Alberto Huélamo"
+
+[blackfriday]
+    hrefTargetBlank = true
+
+[taxonomies]
+    tag      = "tags"
+    category = "categories"
+    series   = "series"
+
+[params]
+    dateform        = "Jan 2, 2006"
+    dateformShort   = "Jan 2"
+    dateformNum     = "2006-01-02"
+    dateformNumTime = "2006-01-02"
+
+    # Metadata mostly used in document's head
+    description = "Alberto Huélamo's personal site"
+    keywords = "homepage, blog"
+    images = [""]
+
+    # Subtitle for home
+    homeSubtitle = "I Write Code"
+
+    # Show light/dark theme toggle
+    enableThemeToggle = true
+
+    [params.footer]
+        trademark = false
+        rss = false
+        copyright = false
+        author = false
+
+        topText = ["© Alberto Huélamo", "<a href=\"http://github.com/alhuelamo\">github</a>", "<a href=\"http://twitter.com/alhuelamo\">twitter</a>", "<a href=\"https://www.linkedin.com/in/alhuelamo/\">linkedin</a>"]
+        bottomText = [
+            "Powered by <a href=\"http://gohugo.io\">Hugo</a>",
+            "Theme by <a href=\"https://github.com/rhazdon\">Djordje Atlialp</a>"
+        ]
+
+    # [params.favicon.color]
+    #     mask = "#1b1c1d"
+    #     msapplication = "#1b1c1d"
+    #     theme = "#1b1c1d"
+
+    [params.logo]
+        logoMark = "/"
+        logoText = "alhuelamo.com"
+        logoHomeLink = "/"
+        logoCursorDisabled = true
+
+    # [params.portrait]
+    #     path     = "/img/image.jpg"
+    #     alt      = "Portrait"
+    #     maxWidth = "50px"
+
+    [[params.social]]
+        name = "github"
+        url  = "https://github.com/alhuelamo"
+
+    [[params.social]]
+        name = "twitter"
+        url  = "https://twitter.com/alhuelamo"
+
+    [[params.social]]
+        name = "linkedin"
+        url  = "https://www.linkedin.com/in/alhuelamo/"
+
+[languages]
+    [languages.en]
+        title = "Alberto Huélamo"
+        subtitle = ""
+        keywords = ""
+        copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+        readOtherPosts = "Read other posts"
+
+[menu]
+    [[menu.main]]
+        identifier = "about"
+        name       = "About"
+        url        = "about/"
+
+    [[menu.main]]
+        identifier = "posts"
+        name       = "Posts"
+        url        = "posts/"
