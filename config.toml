@@ -1,4 +1,4 @@
-baseURL = 'http://alhuelamo.com/'
+baseURL = 'https://alhuelamo.com/'
 languageCode = 'en-us'
 title = 'alhuelamo.com'
 theme = "hello-friend-ng"
