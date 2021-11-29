@@ -1,9 +1,9 @@
 ---
 title: "Native Apple Silicon JDKs"
-date: 2021-11-27T18:33:14+01:00
-slug: 2021-11-27-apple-silicon-jdk
+date: 2021-11-29T18:33:14+01:00
+slug: 2021-11-29-apple-silicon-jdk
 type: posts
-draft: true
+draft: false
 categories:
   - tooling
 tags:
