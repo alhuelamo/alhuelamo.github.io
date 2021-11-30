@@ -9,6 +9,8 @@ categories:
 tags:
   - mac
   - jvm
+  - jdk
+  - sdkman
   - scala
   - sbt
 ---
