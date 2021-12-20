@@ -35,7 +35,7 @@ In SDKMAN you can run
 sdk list java
 ```
 
-which shows a table of the available JDK versions. Here is a potion of that table:
+which shows a table of the available JDK versions. Here is a portion of that table:
 
 ```txt
 ================================================================================
