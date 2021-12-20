@@ -14,7 +14,7 @@ Apple&amp;rsquo;s plan is to carry out a 2-year transition from November 2020 to
 <p>Then some time passed, and after speaking with some collegues, I realized of one — not so obvious — thing: I was not using an Apple-Silicon-native JDK — I would argue this is another symptom of how well Rosetta 2 works, because I was actually fine with performance of my processes. You know, Java is not well know for its faster startup times, so the fact that SBT took 1 or 2 seconds to start up was not out of place. However, it could be better.</p>
 <p>In SDKMAN you can run</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sdk list java
-</code></pre></div><p>which shows a table of the available JDK versions. Here is a potion of that table:</p>
+</code></pre></div><p>which shows a table of the available JDK versions. Here is a portion of that table:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">================================================================================
 Available Java Versions
 ================================================================================
