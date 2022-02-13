@@ -1,7 +1,7 @@
 ---
 title: "Monadic Resource Management in Scala"
-date: 2022-02-12T16:30:59+01:00
-publishDate: 2022-02-12T16:30:59+01:00
+date: 2022-02-14T16:30:59+01:00
+publishDate: 2022-02-14T16:30:59+01:00
 draft: false
 toc: false
 images:
