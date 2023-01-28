@@ -62,7 +62,7 @@ disableHugoGeneratorInject = false
         copyright = false
         author = false
 
-        topText = ["© Alberto Huélamo", "<a href=\"http://github.com/alhuelamo\">github</a>", "<a href=\"http://twitter.com/alhuelamo\">twitter</a>", "<a href=\"https://www.linkedin.com/in/alhuelamo/\">linkedin</a>"]
+        topText = ["© Alberto Huélamo", "<a href=\"http://github.com/alhuelamo\">github</a>", "<a rel=\"me\" href=\"https://mastodon.social/@alhuelamo\">mastodon</a>", "<a href=\"http://twitter.com/alhuelamo\">twitter</a>", "<a href=\"https://www.linkedin.com/in/alhuelamo/\">linkedin</a>"]
         bottomText = [
             "Powered by <a href=\"http://gohugo.io\">Hugo</a>",
             "Theme by <a href=\"https://github.com/rhazdon\">Djordje Atlialp</a>"
@@ -87,6 +87,10 @@ disableHugoGeneratorInject = false
     [[params.social]]
         name = "github"
         url  = "https://github.com/alhuelamo"
+
+    [[params.social]]
+        name = "mastodon"
+        url  = "https://mastodon.social/@alhuelamo"
 
     [[params.social]]
         name = "twitter"
