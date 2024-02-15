@@ -1,6 +1,7 @@
 ---
 title: "The 'indirect' argument in pytest fixture parametrization"
 date: 2024-02-15T16:30:00+01:00
+publishDate: 2024-02-15T16:30:00+01:00
 draft: false
 toc: false
 images:
