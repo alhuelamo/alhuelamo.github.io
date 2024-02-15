@@ -1,4 +1,84 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Alberto Huélamo</title><link>https://alhuelamo.com/posts/</link><description>Recent content in Posts on Alberto Huélamo</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 14 Feb 2022 16:30:00 +0100</lastBuildDate><atom:link href="https://alhuelamo.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Monadic Resource Management in Scala</title><link>https://alhuelamo.com/posts/2022/02/monadic-resource-management-in-scala/</link><pubDate>Mon, 14 Feb 2022 16:30:00 +0100</pubDate><guid>https://alhuelamo.com/posts/2022/02/monadic-resource-management-in-scala/</guid><description>Photo by Markus Spiske in Unsplash
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Alberto Huélamo</title><link>https://alhuelamo.com/posts/</link><description>Recent content in Posts on Alberto Huélamo</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 15 Feb 2024 16:30:00 +0100</lastBuildDate><atom:link href="https://alhuelamo.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>The 'indirect' argument in pytest fixture parametrization</title><link>https://alhuelamo.com/posts/2024/02/the-indirect-argument-in-pytest-fixture-parametrization/</link><pubDate>Thu, 15 Feb 2024 16:30:00 +0100</pubDate><guid>https://alhuelamo.com/posts/2024/02/the-indirect-argument-in-pytest-fixture-parametrization/</guid><description>Photo by Julia Koblitz in Unsplash
+The purpose of indirect=True in the pytest.mark.parametrize decorator was not very clear to me just by reading pytest documentation:
+Using the indirect=True parameter when parametrizing a test allows to parametrize a test with a fixture receiving the values before passing them to a test
+import pytest @pytest.fixture def fixt(request): return request.param * 3 @pytest.mark.parametrize(&amp;#34;fixt&amp;#34;, [&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;], indirect=True) def test_indirect(fixt): assert len(fixt) == 3 I found this definition rather unclear, and a bit of a mouthful.</description><content type="html"><![CDATA[<figure><img src="/img/julia-koblitz-RlOAwXt2fEA-unsplash.jpg"
+         alt="Photo by Julia Koblitz in Unsplash"/><figcaption>
+            <p>Photo by <a href="https://unsplash.com/@jkoblitz">Julia Koblitz</a> in <a href="https://unsplash.com/s/photos/pieces">Unsplash</a></p>
+        </figcaption>
+</figure>
+
+<p>The purpose of <code>indirect=True</code> in the <code>pytest.mark.parametrize</code> decorator was not very clear to me just by reading <a href="https://docs.pytest.org/en/7.1.x/example/parametrize.html#indirect-parametrization">pytest documentation</a>:</p>
+<blockquote>
+<p>Using the <code>indirect=True</code> parameter when parametrizing a test allows to parametrize a test with a fixture receiving the values before passing them to a test</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.fixture</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fixt</span>(request):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> request<span style="color:#f92672">.</span>param <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.mark.parametrize</span>(<span style="color:#e6db74">&#34;fixt&#34;</span>, [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>], indirect<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_indirect</span>(fixt):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> len(fixt) <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><p>I found this definition rather unclear, and a bit of a mouthful. So I just created a toy example to test it&rsquo;s purpose&hellip; (Could this be <em>meta-testing</em>? 🤔)</p>
+<h1 id="hands-on">Hands-on!</h1>
+<p>After writing some toy examples, the purpose of <code>indirect</code> becomes apparent when we remove it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@pytest.mark.parametrize</span>(<span style="color:#e6db74">&#34;fixt&#34;</span>, [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_indirect</span>(fixt):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> len(fixt) <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><p>This is what we get after running pytest:</p>
+<pre tabindex="0"><code>collected 2 items
+
+tests/test_indirect.py::test_indirect[a] FAILED            [ 50%]
+tests/test_indirect.py::test_indirect[b] FAILED            [100%]
+
+============================ FAILURES ============================
+________________________ test_indirect[a] ________________________
+
+my_fixture = &#39;a&#39;
+
+    @pytest.mark.parametrize(&#34;my_fixture&#34;, [&#34;a&#34;, &#34;b&#34;])
+    def test_indirect(my_fixture):
+&gt;       assert len(my_fixture) == 3
+E       AssertionError: assert 1 == 3
+E        +  where 1 = len(&#39;a&#39;)
+
+tests/test_indirect.py:12: AssertionError
+________________________ test_indirect[b] ________________________
+
+my_fixture = &#39;b&#39;
+
+    @pytest.mark.parametrize(&#34;my_fixture&#34;, [&#34;a&#34;, &#34;b&#34;])
+    def test_indirect(my_fixture):
+&gt;       assert len(my_fixture) == 3
+E       AssertionError: assert 1 == 3
+E        +  where 1 = len(&#39;b&#39;)
+
+tests/test_indirect.py:12: AssertionError
+==================== short test summary info =====================
+FAILED tests/test_indirect.py::test_indirect[a] - AssertionError: assert 1 == 3
+FAILED tests/test_indirect.py::test_indirect[b] - AssertionError: assert 1 == 3
+======================= 2 failed in 0.01s ========================
+</code></pre><p>What we can see is that <code>parametrize</code> is <em>directly</em> passing each parameter value to the <code>fixt</code> test argument. Therefore, it ignores the fixture and parametrizes the test.</p>
+<p>Should we want to parametrize the fixture back, we would set <code>indirect=True</code> back, and so the tests pass again:</p>
+<pre tabindex="0"><code>collected 2 items
+
+tests/test_indirect.py::test_indirect[a] PASSED            [ 50%]
+tests/test_indirect.py::test_indirect[b] PASSED            [100%]
+
+======================= 2 passed in 0.00s ========================
+</code></pre><p>pytest would still spawn 2 tests cases—one for each parameter—but this time, the test would receive the result of the fixture, and <code>parametrize</code> would send the argument to the fixture instead of the test.</p>
+<p>Hence we can conclude the <code>indirect</code> controls whether <code>parametrize</code> <em>sends</em> the arguments to either the test of a fixture with the same argument&rsquo;s name. If we tried to use <code>indirect=True</code>, and there was no fixture <code>fixt</code>, we would get an error:</p>
+<pre tabindex="0"><code>_______________ ERROR at setup of test_indirect[a] _______________
+file /Users/alberto/Code/pytest-indirect-parametrization/tests/test_indirect.py, line 10
+  @pytest.mark.parametrize(&#34;fixt&#34;, [&#34;a&#34;, &#34;b&#34;], indirect=True)
+  def test_indirect(fixt):
+E       fixture &#39;fixt&#39; not found
+</code></pre><h1 id="pytest-is-great">pytest is great!</h1>
+<p>pytest&rsquo;s fixture system is awesome. I can declare test resources in a very modular, flexible fashion. Then, I can use those resources in my tests, and pytest takes care of running those fixtures for me, and cleaning-up those test resources when each test case is finished. With <code>parametrize</code>, I can ensure to cover more cases without having to write more tests. And, if I have fixtures that should be parametrized, I can tweak those parameters from each particular test.</p>
+<p>I wrote this piece back in the day as an exercise for me to understand a bit better what I could achieve with pytest. I hope it can be useful to somebody else!</p>
+<p>Happy testing! 🧪</p>
+]]></content></item><item><title>Monadic Resource Management in Scala</title><link>https://alhuelamo.com/posts/2022/02/monadic-resource-management-in-scala/</link><pubDate>Mon, 14 Feb 2022 16:30:00 +0100</pubDate><guid>https://alhuelamo.com/posts/2022/02/monadic-resource-management-in-scala/</guid><description>Photo by Markus Spiske in Unsplash
 In my company we have a considerably big Scala codebase. We use Scala for data pipelines, function apps, web services&amp;hellip; Everything is based on a common set of libraries that standardizes access to resources, enforces some conventions, and of course provides several utilities. One of this is a tiny little method which implements automatic context/resource management for AutoCloseable objects.
 def withCloseable[C &amp;lt;: AutoCloseable, R](closeable: =&amp;gt; C)(f: C =&amp;gt; R): R = { // simplified implementation val result = f(closeable) closeable.</description><content type="html"><![CDATA[<figure><img src="/img/markus-spiske-C0koz3G1I4I-unsplash.jpg"
          alt="Photo by Markus Spiske in Unsplash"/><figcaption>
