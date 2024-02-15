@@ -82,7 +82,7 @@ FAILED tests/test_indirect.py::test_indirect[b] - AssertionError: assert 1 == 3
 
 What we can see is that `parametrize` is *directly* passing each parameter value to the `fixt` test argument. Therefore, it ignores the fixture and parametrizes the test.
 
-Should we want to parametrize the fixture back, we would set `indirect=True` back, and so the tests pass again:
+Should we want to parametrize the fixture back, we would set `indirect=True`, and so the tests pass again:
 
 ```
 collected 2 items
@@ -95,7 +95,7 @@ tests/test_indirect.py::test_indirect[b] PASSED            [100%]
 
 pytest would still spawn 2 tests cases—one for each parameter—but this time, the test would receive the result of the fixture, and `parametrize` would send the argument to the fixture instead of the test.
 
-Hence we can conclude the `indirect` controls whether `parametrize` *sends* the arguments to either the test of a fixture with the same argument's name. If we tried to use `indirect=True`, and there was no fixture `fixt`, we would get an error:
+Hence we can conclude that `indirect` controls whether `parametrize` *sends* the arguments to either the test, or a fixture with the same argument's name. If we tried to use `indirect=True`, and there was no fixture `fixt`, we would get an error:
 
 ```
 _______________ ERROR at setup of test_indirect[a] _______________
